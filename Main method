@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+
+public class Homework9Solution {
+
+	public static void main(String[] args) {
+		
+		String name = getName();
+		
+		double hourlyWage = getHourlyWage();
+		
+		int hours = getNumberOfHours();
+		
+		double weeklySalary = calculateWeeklySalary(hourlyWage,hours);
+		
+		printInformation(name,hourlyWage,hours,weeklySalary);
+	}
+	
+	public static String getName() {
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("Enter your name");
+		String employeeName = keyboard.nextLine();
+		
+		return employeeName;
+	}
+	
+	public static double getHourlyWage() {
+		Scanner keyboard = new Scanner(System.in);
+		
+		double hourlyWage;
+		do {
+			System.out.println("Enter your hourly wage");
+			hourlyWage = keyboard.nextDouble();
+			if(hourlyWage < 10 || hourlyWage > 100) {
+				System.out.println("Your hourly wage is either too low or too high");
+			}
+		}while(hourlyWage < 10 || hourlyWage > 100);
+		
+		return hourlyWage;
+	}
+	
+	public static int getNumberOfHours() {
+		Scanner keyboard = new Scanner(System.in);
+		
+		int numberOfHours;
+		do {
+			System.out.println("Enter the number of hours worked this week");
+			numberOfHours = keyboard.nextInt();
+			if(numberOfHours < 0 || numberOfHours > 100) {
+				System.out.println("Your number of hours is either too low or too high");
+			}
+		}while(numberOfHours < 0 || numberOfHours > 100);
+		
+		return numberOfHours;
+	}
+	
+	public static double calculateWeeklySalary(double hourlyWage, int numberOfHours) {
+		double salary = hourlyWage * ((double)numberOfHours);
+		
+		return salary;
+	}
+	
+	public static void printInformation(String name, double hourlyWage, int numberOfHours, double weeklySalary) {
+		System.out.println("Employee's Name: " + name);
+		System.out.println("Employee's Hourly Wage: " + hourlyWage);
+		System.out.println("Employee's Hours Worked this week: " + numberOfHours);
+		System.out.println("Employee's Salary for the week: " + weeklySalary);
+	}
+
+}
